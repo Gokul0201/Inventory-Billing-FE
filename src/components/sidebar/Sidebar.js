@@ -1,9 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './sidebar.css'
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className="sidebar-container">
     <ul className="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
 {/* <!-- Sidebar - Brand --> */}

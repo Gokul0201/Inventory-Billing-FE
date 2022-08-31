@@ -6,12 +6,12 @@ import './homepage.css'
 const HomePage = () => {
   // const navigate=useNavigate();
   return (
-    <div className="container-fluid ">
+    <div className="conainer-fluid homepage-container">
     <div className='container '>
       <header>
             <h1 className=" text-center">Welcome to Inventory Billing</h1>
             <h1 className=" text-center">Lets do here <br/> Inventory Management & <br/>Create Invoice Easily</h1>
-            <div className="buttons text-center">
+            <div className="buttons text-center btn-container">
                 <Link to="/login">
                     <Button variant="warning">Log in</Button>
                 </Link>{'  '}
@@ -21,11 +21,10 @@ const HomePage = () => {
             </div>
         </header>
       
-       {/* <Button variant="warning" onClick={()=>navigate('/login')}>Login</Button>{' '}
-       <Button variant="info" onClick={()=>navigate('/signup')}>Signup</Button>{' '} */}
-      
     </div>
     </div>
+ 
+   
   )
 }
 

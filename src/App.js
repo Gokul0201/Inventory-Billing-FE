@@ -16,11 +16,13 @@ import AddCustomer from './components/customersList/AddCustomer';
 import AddStocks from './components/Stocks/AddStocks';
 import StocksList from './components/Stocks/StocksList';
 import Payments from './components/payments/Payments';
-import Sidebar from './components/sidebar/Sidebar';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'antd/dist/antd.css';
 
 function App() {
   return <>
-  <div className="main-wrapper">
+  <div className="App">
+    
       <BrowserRouter>
       
         <Routes>
@@ -39,6 +41,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+   
  
   </>
 }
