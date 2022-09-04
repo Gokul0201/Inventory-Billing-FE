@@ -1,3 +1,4 @@
+import React,{ useState,useEffect} from 'react'
 import {BrowserRouter, Route,Routes} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,9 +19,40 @@ import StocksList from './components/Stocks/StocksList';
 import Payments from './components/payments/Payments';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'antd/dist/antd.css';
+import EditCustomer from './components/customersList/EditCustomer'
+import Header from './components/Home/Header/Header';
+
+export const url="https://62a96c57ec36bf40bdb75056.mockapi.io/users/customers";
+export const url1="https://62a96c57ec36bf40bdb75056.mockapi.io/users/Stocks";
+
+
+
+
 
 function App() {
+  const [isLoading, setLoading] = useState(true);
+  
+
+  function fakeRequest() {
+    return new Promise(resolve => setTimeout(() => resolve(), 2500));
+  }
+
+  useEffect(() => {
+    fakeRequest().then(() => {
+      const el = document.querySelector(".loader-container");
+      if (el) {
+        el.remove();
+        setLoading(!isLoading);
+      }
+    });
+  }, []);
+
+  if (isLoading) {
+    return null;
+  }
+  
   return <>
+   
   <div className="App">
     
       <BrowserRouter>
@@ -34,9 +66,11 @@ function App() {
           <Route path="/invoice" element={<Invoice/>} />
           <Route path="/customers" element={<CustomerList/>} />
           <Route path="/add-customers" element={<AddCustomer/>} />
+          <Route path="edit-customer/:id" element={<EditCustomer/>}/>
           <Route path="/stocks" element={<StocksList/>} />
           <Route path="/add-stocks" element={<AddStocks/>} />
           <Route path="/payments" element={<Payments/>} />
+          <Route path="/header" element={<Header/>} />
           <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightToBracket, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import LoginImg from '../../Assets/login.png'
+import LoginImg from '../../Assets/login (1).png'
 import toast, { Toaster } from 'react-hot-toast';
 // import axios from 'axios'
 // import { config } from '../../config'

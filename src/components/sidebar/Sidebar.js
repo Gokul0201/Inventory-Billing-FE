@@ -1,16 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './sidebar.css'
+import Icon1 from '../../Assets/icons8-inventory-64.png'
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-container">
-    <ul className="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+    <div  className="sidebar-container">
+    <ul className="navbar-nav bg-gradient-info sidebar sidebar-dark " >
 
 {/* <!-- Sidebar - Brand --> */}
 <div className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 <div className="sidebar-brand-icon">
-<i className="fa-solid fa-warehouse"></i>
+{/* <i className="fa-solid fa-warehouse"></i> */}
+<img src={Icon1} alt='icon'/>
 </div>
 <div className="sidebar-brand-text mx-3">Inventory & Billing app</div>
 </div>
@@ -45,10 +47,10 @@ const Sidebar = () => {
     <Link to='/customers'><span style={{"color":"white"}}>Customers List</span></Link>
 </div>
 
-<div className="nav-link collapsed">
+{/* <div className="nav-link collapsed">
 <i className="fa-solid fa-user-plus"></i>
     <Link to='/add-customers'><span style={{"color":"white"}}>  Add Customer</span></Link>
-</div>
+</div> */}
 
 <div className="nav-link collapsed">
 <i className="fa-solid fa-cubes-stacked"></i>

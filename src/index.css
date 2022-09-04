@@ -10327,7 +10327,7 @@
   }
   
   .sidebar {
-    width: 6.5rem;
+    width: 6.5rem!important;
     min-height: 100vh;
   }
   
@@ -11287,5 +11287,8 @@
     width: 100%;
   }
 
-
+body,html{
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: large !important;
+}
   
