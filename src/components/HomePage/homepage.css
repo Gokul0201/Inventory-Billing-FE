@@ -13,8 +13,10 @@
     background-size: cover;  
     
 }
-.homepage-container>.container>img{
+.image_container{
     width: 100px;
+    display: inline !important;
+   
 }
 h1{
     font-family: 'Times New Roman', Times, serif;

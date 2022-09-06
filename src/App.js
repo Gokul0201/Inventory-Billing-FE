@@ -16,7 +16,7 @@ import CustomerList from './components/customersList/CustomerList';
 import AddCustomer from './components/customersList/AddCustomer';
 import AddStocks from './components/Stocks/AddStocks';
 import StocksList from './components/Stocks/StocksList';
-import Payments from './components/payments/Payments';
+// import Payments from './components/payments/Payments';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'antd/dist/antd.css';
 import EditCustomer from './components/customersList/EditCustomer'
@@ -69,7 +69,7 @@ function App() {
           <Route path="edit-customer/:id" element={<EditCustomer/>}/>
           <Route path="/stocks" element={<StocksList/>} />
           <Route path="/add-stocks" element={<AddStocks/>} />
-          <Route path="/payments" element={<Payments/>} />
+          {/* <Route path="/payments" element={<Payments/>} /> */}
           <Route path="/header" element={<Header/>} />
           <Route path="*" element={<Error/>} />
         </Routes>

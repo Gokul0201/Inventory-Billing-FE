@@ -9,8 +9,9 @@ const HomePage = () => {
   return (
     <div className="conainer-fluid homepage-container">
     <div className='container '>
-      <img src={logo} alt="logo" />
+      
       <header>
+      <img src={logo} className="image_container"alt="logo" />
             <h1 className=" text-center">Welcome to Inventory Billing</h1>
             <h1 className=" text-center">Lets do  <br/> Inventory Management & <br/>Create Invoice Easily </h1>
             <div className="buttons text-center btn-container">
