@@ -56,14 +56,14 @@ function Invoice() {
      
       <h1 className="text-center"> Invoice </h1>
       <main className="m-5 p-5 xl:grid grid-cols-2 gap-10 xl:items-start">
-      {/* <Button variant="primary"  onClick={()=>navigate("/dashboard")}>Back to dashboard</Button> */}
+      
         <section>
           <div className="bg-white p-5 rounded shadow">
             {/* name, address, email, phone, bank name, bank account number, website client name, client address, invoice number, invoice date, due date, notes */}
             <div className="flex flex-col justify-center">
               <article className="md:grid grid-cols-2 gap-10">
                 <div className="flex flex-col">
-                  <label htmlFor="name">Your full name</label>
+                  <label htmlFor="name">Company Name</label>
                   <input
                     type="text"
                     name="text"
@@ -76,7 +76,7 @@ function Invoice() {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="address">your address</label>
+                  <label htmlFor="address">Company Address</label>
                   <input
                     type="text"
                     name="address"
@@ -91,7 +91,7 @@ function Invoice() {
 
               <article className="md:grid grid-cols-2 gap-8">
                 <div className="flex flex-col">
-                  <label htmlFor="email">Your Email</label>
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -104,7 +104,7 @@ function Invoice() {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="website">website</label>
+                  <label htmlFor="website">Website</label>
                   <input
                     type="url"
                     name="website"
@@ -130,9 +130,9 @@ function Invoice() {
                 </div>
               </article>
 
-              <article className="md:grid grid-cols-2 gap-10">
+              <article className="md:grid grid-cols-2 gap-8">
                 <div className="flex flex-col">
-                  <label htmlFor="bankName">Enter your bank name</label>
+                  <label htmlFor="bankName">Bank Name</label>
                   <input
                     type="text"
                     name="bankName"
@@ -146,7 +146,7 @@ function Invoice() {
 
                 <div className="flex flex-col">
                   <label htmlFor="bankAccount">
-                    Enter your bank account number
+                    Bank Account Number
                   </label>
                   <input
                     type="text"
@@ -162,12 +162,12 @@ function Invoice() {
 
               <article className="md:grid grid-cols-2 gap-10 md:mt-16">
                 <div className="flex flex-col">
-                  <label htmlFor="clientName">Enter your client's name</label>
+                  <label htmlFor="clientName">Customer name</label>
                   <input
                     type="text"
                     name="clientName"
                     id="clientName"
-                    placeholder="Enter your client's name"
+                    placeholder="Enter customer name"
                     autoComplete="off"
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
@@ -176,7 +176,7 @@ function Invoice() {
 
                 <div className="flex flex-col">
                   <label htmlFor="clientAddress">
-                    Enter your client's address
+                    Customer address
                   </label>
                   <input
                     type="text"
@@ -249,16 +249,7 @@ function Invoice() {
                 />
               </article>
 
-              {/* <label htmlFor="notes">Additional Notes</label>
-              <textarea
-                name="notes"
-                id="notes"
-                cols="30"
-                rows="10"
-                placeholder="Additional notes to the client"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-              ></textarea> */}
+            
 
               {/* <button
               onClick={() => setShowInvoice(true)}
@@ -275,12 +266,13 @@ function Invoice() {
 
         {/* Invoice Preview */}
         <div className="invoice__preview bg-white p-5 rounded">
-        <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">
+        <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500"
+        onClick={()=>navigate('/dashboard')}>
              Back
               </button>
           <ReactToPrint
             trigger={() => (
-              <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300 flex justify-end">
+              <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 p-2">
                 Print / Download
               </button>
             )}

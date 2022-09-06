@@ -128,7 +128,7 @@ export default function TableForm({
         </div>
         <button
           type="submit"
-          className="mb-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
+          className="mb-5 p-2 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500  transition-all duration-300"
         >
           {isEditing ? "Editing Row Item" : "Add Table Item"}
         </button>
