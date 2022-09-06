@@ -2,15 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {Button} from 'react-bootstrap'
 import './homepage.css'
+import logo from '../../Assets/icons8-inventory-64.png'
 
 const HomePage = () => {
   // const navigate=useNavigate();
   return (
     <div className="conainer-fluid homepage-container">
     <div className='container '>
+      <img src={logo} alt="logo" />
       <header>
             <h1 className=" text-center">Welcome to Inventory Billing</h1>
-            <h1 className=" text-center">Lets do here <br/> Inventory Management & <br/>Create Invoice Easily</h1>
+            <h1 className=" text-center">Lets do  <br/> Inventory Management & <br/>Create Invoice Easily </h1>
             <div className="buttons text-center btn-container">
                 <Link to="/login">
                     <Button variant="warning">Log in</Button>

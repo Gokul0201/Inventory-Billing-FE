@@ -37,7 +37,7 @@ const CustomerList = () => {
       <Sidebar/>
       <div className='container'>
         <h3 className='d-flex justify-content-center fw-bold text-dark'>CUSTOMERS LIST</h3>
-        <Button variant="primary" classNmae='text-center' onClick={() => navigate('/add-customers')}> +  Add customer </Button>
+        <Button variant="primary" className='d-flex justify-content-end' onClick={() => navigate('/add-customers')}> +  Add customer </Button>
         <div className='row py-5 '>
           <div className='col-lg-12'>
         <Table striped bordered hover>
