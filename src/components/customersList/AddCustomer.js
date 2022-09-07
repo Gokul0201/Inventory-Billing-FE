@@ -60,7 +60,7 @@ const AddCustomer = (props) => {
     <Form.Control type="text" placeholder="Your Address" onChange={(e=>setAddress(e.target.value))}/>
   </Form.Group>
  
-  <Button variant="primary" onClick={() =>handleSubmit()}>
+  <Button variant="primary" className="text-dark" onClick={() =>handleSubmit()}>
     Submit
   </Button>
   </Form>

@@ -59,14 +59,14 @@ catch(error)
       <Sidebar/>
       <div className='container'>
         <h3 className='d-flex justify-content-center fw-bold text-dark'>CUSTOMERS LIST</h3>
-        <Button variant="primary" className='d-flex justify-content-end' onClick={() => navigate('/add-customers')}> +  Add customer </Button>
+        <Button variant="primary" className="text-dark" onClick={() => navigate('/add-customers')}> +  Add customer </Button>
         <div className='row py-5 '>
           <div className='col-lg-12'>
         <Table striped bordered hover>
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
+        <th>Name</th> 
         <th>Email</th>
         <th>Mobile</th>
         <th>GSTIN No</th>
@@ -85,9 +85,9 @@ catch(error)
                   <td>{e.gstin}</td>
                   <td>{e.address}</td>
                   <td>
-                      <Button variant="primary" onClick={() => navigate(`/edit-customer/${e._id}`)}>Edit</Button>
+                      <Button variant="primary" className="text-dark" onClick={() => navigate(`/edit-customer/${e._id}`)}>Edit</Button>
                       &nbsp;&nbsp;
-                      <Button variant="danger" onClick={() => handleDelete(e._id) }>Delete</Button>
+                      <Button variant="danger" className="text-dark" onClick={() => handleDelete(e._id) }>Delete</Button>
                   </td>
               </tr>
           })
