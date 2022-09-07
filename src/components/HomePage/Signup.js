@@ -1,44 +1,3 @@
-// import React from 'react'
-// import {Link} from 'react-router-dom'
-
-
-// const Signup = () => {
-//   return (
-//     <div className="container">
-//     <div className="text-center mx-auto">
-//             <h2>Join us</h2>
-//             <h5>Create your personal account</h5>
-//             <form action="/login">
-//                 <p>
-//                     <label>Username</label><br/>
-//                     <input type="text" name="first_name" required />
-//                 </p>
-//                 <p>
-//                     <label>Email address</label><br/>
-//                     <input type="email" name="email" required />
-//                 </p>
-//                 <p>
-//                     <label>Password</label><br/>
-//                     <input type="password" name="password" requiredc />
-//                 </p>
-//                 <p>
-//                     <input type="checkbox" name="checkbox" id="checkbox" required /> <span>I agree all statements in <a href="https://google.com" target="_blank" rel="noopener noreferrer">terms of service</a></span>.
-//                 </p>
-//                 <p>
-//                     <button id="sub_btn" type="submit">Register</button>
-//                 </p>
-//             </form>
-//             <footer>
-//                 <p><Link to="/">Back to Homepage</Link>.</p>
-//             </footer>
-//             </div>
-//         </div>
-
-//   )
-// }
-
-// export default Signup
-
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpFromBracket, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -46,9 +5,9 @@ import { useFormik } from 'formik'
 import toast, { Toaster } from 'react-hot-toast';
 import './signup.css'
 import { Link, useNavigate } from 'react-router-dom'
-// import axios from 'axios'
-// import { config } from '../../config'
+import axios from 'axios'
 import signUpImg from '../../Assets/signup.png'
+import {url} from '../../App'
 
 const Signup = () => {
     const [showPass, setShowPass] = useState(false)
@@ -79,18 +38,18 @@ const Signup = () => {
             return errors
         },
 
-        // onSubmit: async (values, { resetForm }) => {
-        //     try {
-        //         let postData = await axios.post(`${config.api}/register`, values)
-        //         resetForm({ values: '' })
-        //         toast.success(postData.data.message)
-        //         setTimeout(() => {
-        //             navigate("/login")
-        //         }, 3000)
-        //     } catch (error) {
-        //         alert('Register Error!')
-        //     }
-        // }
+        onSubmit: async (values, { resetForm }) => {
+            try {
+                let postData = await axios.post(`${url}/register`, values)
+                resetForm({ values: '' })
+                toast.success(postData.data.message)
+                setTimeout(() => {
+                    navigate("/login")
+                }, 3000)
+            } catch (error) {
+                alert('Register Error!')
+            }
+        }
     })
 
     const handlePassShown = () => {
@@ -108,7 +67,7 @@ const Signup = () => {
                         <div className='signUpImg'>
                             <img src={signUpImg} alt="signup-img" />
                         </div>
-                        <form onSubmit={formik.handleSubmit}>
+                        <form >
                             <label htmlFor="">Email <span className='redStar'>*</span></label>
                             <input type="email" className={formik.errors.email ? 'errBorder form-control' : 'form-control'} name='email' value={formik.values.email}
                                 onChange={formik.handleChange} />
@@ -131,7 +90,7 @@ const Signup = () => {
                                 formik.errors.password ? <p style={{ color: 'crimson', fontWeight: "bold", WebkitTextStroke: "0.2px black" }}>{formik.errors.password}</p> : null
                             }
                             <div className="regBtn">
-                                <button className='btn btn-warning mt-4'>Register &nbsp;<FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                                <button className='btn btn-warning mt-4' onSubmit={formik.handleSubmit}>Register &nbsp;<FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
                             </div>
                             <p className='mt-3'>If you have already account? <Link to="/login">Login</Link></p>
                         </form>

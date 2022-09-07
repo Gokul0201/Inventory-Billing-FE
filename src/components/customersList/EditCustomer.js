@@ -3,7 +3,7 @@ import { useNavigate,useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
-import {url} from '../../App'
+import {customerUrl} from '../../App'
 import Sidebar from '../sidebar/Sidebar'
 
 
@@ -23,14 +23,27 @@ const EditCustomer = (props) => {
     getData()
   }, [])
 
-  let getData=async () =>{
-    let res=await axios.get(`${url}/${params.id}`)
-    setName(res.data.name)
-    setEmail(res.data.email)
-    setMobile(res.data.mobile)
-    setGstin(res.data.gstin)
-    setAddress(res.data.address)
-    
+  let getData = async ()=>{
+    let token = window.sessionStorage.getItem('token');
+    let res = await axios.get(`${customerUrl}/customers/${params.id}`,{headers: {authorization:`Bearer ${token}`}})
+    console.log(res.data)
+    if(res.data.statusCode===200)
+    {
+      setName(res.data.users.name)
+      setEmail(res.data.users.email)
+      setMobile(res.data.users.mobile)
+      setGstin(res.data.users.gstin)
+      setAddress(res.data.users.address)
+    }
+    else if(res.data.statusCode===401)
+    {
+      alert(res.data.message)
+      navigate('/login')
+    }
+    else
+    {
+        alert(res.data.message)
+    }
   }
 
   let handleSubmit=async ()=>{
@@ -42,11 +55,21 @@ const EditCustomer = (props) => {
     address
   }
     
-
-  let res=await axios.put(`${url}/${params.id}`,data)
-  if (res.status === 200)
+  let token = window.sessionStorage.getItem('token');
+  let res = await axios.put(`${customerUrl}/edit-customers/${params.id}`,data,{headers: {authorization:`Bearer ${token}`}})
+  //Just to jump to different route
+  if(res.status===200)
     navigate('/customers')
-  }
+    else if(res.data.statusCode===401)
+    {
+      alert(res.data.message)
+      navigate('/login')
+    }
+    else
+    {
+      alert(res.data.message)
+    }
+}
   
   return <>
     

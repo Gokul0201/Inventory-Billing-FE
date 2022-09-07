@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'; 
-import {url1} from '../../App'
+import {stockUrl} from '../../App'
 
 const AddStocks = () => {
   let[productName,setProduct]=useState("");
@@ -24,8 +24,8 @@ const AddStocks = () => {
   }
     
 
-  let res=await axios.post(url1,data)
-  if (res.status === 201)
+  let res=await axios.post(`${stockUrl}/stocks`,data)
+  if (res.status === 200)
     navigate('/stocks')
   }
   

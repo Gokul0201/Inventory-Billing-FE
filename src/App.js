@@ -3,10 +3,9 @@ import {BrowserRouter, Route,Routes} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import Header from './components/Header/Header';
+
 import Dashboard from './components/Home/Dashboard';
 import HomePage from './components/HomePage/HomePage';
-// import Sidebar from './components/sidebar/Sidebar';
 import Error from './components/Error/Error404';
 import Signup from './components/HomePage/Signup';
 import Login from './components/HomePage/Login';
@@ -16,14 +15,14 @@ import CustomerList from './components/customersList/CustomerList';
 import AddCustomer from './components/customersList/AddCustomer';
 import AddStocks from './components/Stocks/AddStocks';
 import StocksList from './components/Stocks/StocksList';
-// import Payments from './components/payments/Payments';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'antd/dist/antd.css';
 import EditCustomer from './components/customersList/EditCustomer'
-import Header from './components/Home/Header/Header';
 
-export const url="https://62a96c57ec36bf40bdb75056.mockapi.io/users/customers";
-export const url1="https://62a96c57ec36bf40bdb75056.mockapi.io/users/Stocks";
+
+export const url="https://inventory-billing01.herokuapp.com/users";
+export const customerUrl="https://inventory-billing01.herokuapp.com/customers";
+export const stockUrl="https://inventory-billing01.herokuapp.com/stocks";
 
 
 
@@ -69,8 +68,6 @@ function App() {
           <Route path="edit-customer/:id" element={<EditCustomer/>}/>
           <Route path="/stocks" element={<StocksList/>} />
           <Route path="/add-stocks" element={<AddStocks/>} />
-          {/* <Route path="/payments" element={<Payments/>} /> */}
-          <Route path="/header" element={<Header/>} />
           <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>

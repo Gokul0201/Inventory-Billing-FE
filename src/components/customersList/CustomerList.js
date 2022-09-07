@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Table from 'react-bootstrap/esm/Table';
 import Button from 'react-bootstrap/esm/Button';
-import {url} from '../../App'
+import {customerUrl} from '../../App'
 import axios from 'axios'
 import Sidebar from '../sidebar/Sidebar'
 
@@ -16,21 +16,43 @@ const CustomerList = () => {
   },[])
 
   let getData = async ()=>{
-     let res = await axios.get(url)
-     setData(res.data)
-  }
+    let token = window.sessionStorage.getItem('token');
+   let res = await axios.get(`${customerUrl}/customers`,{
+    headers: {authorization:`Bearer ${token}`}
+   })
 
-  let handleDelete = async(i)=>{
-      try
-      {
-          await axios.delete(`${url}/${i}`)
-      }
-      catch(error)
-      {
-          console.log(error)
-      }
-      getData()
-  }
+   if(res.data.statusCode === 200)
+        setData(res.data.users)
+   else if(res.data.statusCode === 401){
+        alert(res.data.message)
+        navigate('/login')
+   }
+}
+let handleDelete = async(id)=>{
+try
+{
+    let token = window.sessionStorage.getItem('token');
+    let res = await axios.delete(`${customerUrl}/delete-customers/${id}`,{headers:{authorization:`Bearer ${token}`}})
+
+    if(res.data.statusCode === 200)
+    {
+        setData(res.data.users)
+    }
+    else if(res.data.statusCode === 401)
+    {
+        alert(res.data.message)
+        navigate('/login')
+    }
+    else
+    {
+        alert(res.data.message)
+    }
+}
+catch(error)
+{
+    console.log(error)
+}
+}
   
   return (
     <div className="main-wrapper">
@@ -43,7 +65,7 @@ const CustomerList = () => {
         <Table striped bordered hover>
     <thead>
       <tr>
-        {/* <th>#</th> */}
+        <th>#</th>
         <th>Name</th>
         <th>Email</th>
         <th>Mobile</th>
@@ -54,18 +76,18 @@ const CustomerList = () => {
     </thead>
     <tbody>
       {
-          data.map((e)=>{
-              return <tr key={e.id}>
-                  {/* <td>{e.id}</td> */}
+          data.map((e,i)=>{
+              return <tr key={e._id}>
+                  <td>{i+1}</td>
                   <td>{e.name}</td>
                   <td>{e.email}</td>
                   <td>{e.mobile}</td>
                   <td>{e.gstin}</td>
                   <td>{e.address}</td>
                   <td>
-                      <Button variant="primary" onClick={() => navigate(`/edit-customer/${e.id}`)}>Edit</Button>
+                      <Button variant="primary" onClick={() => navigate(`/edit-customer/${e._id}`)}>Edit</Button>
                       &nbsp;&nbsp;
-                      <Button variant="danger" onClick={() => handleDelete(e.id) }>Delete</Button>
+                      <Button variant="danger" onClick={() => handleDelete(e._id) }>Delete</Button>
                   </td>
               </tr>
           })

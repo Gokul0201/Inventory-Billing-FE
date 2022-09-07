@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
-import {url} from '../../App'
+import {customerUrl} from '../../App'
 
 const AddCustomer = (props) => {
   let[name,setName]=useState("");
@@ -25,8 +25,8 @@ const AddCustomer = (props) => {
   }
     
 
-  let res=await axios.post(url,data)
-  if (res.status === 201)
+  let res=await axios.post(`${customerUrl}/customers`,data)
+  if (res.status === 200)
     navigate('/customers')
   }
   

@@ -62,10 +62,10 @@ const Sidebar = () => {
     <Link to='/add-stocks'><span style={{"color":"white"}}>  Add stocks</span></Link>
 </div>
 
-{/* <div className="nav-link collapsed">
-<i className="fa-solid fa-file-invoice-dollar"></i>
-    <Link to='/payments'><span style={{"color":"white"}}>  Payments</span></Link>
-</div> */}
+<div className="nav-link collapsed">
+<i className="fa-solid fa-right-from-bracket"></i>
+    <Link to='/login'><span style={{"color":"white"}}>Logout</span></Link>
+</div>
 
 
 </li>

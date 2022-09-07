@@ -3,7 +3,7 @@ import Sidebar from '../sidebar/Sidebar'
 import { useNavigate } from 'react-router-dom';
 import Table from 'react-bootstrap/esm/Table';
 import Button from 'react-bootstrap/esm/Button';
-import {url1} from '../../App'
+import {stockUrl} from '../../App'
 import axios from 'axios'
 
 const StocksList = () => {
@@ -14,22 +14,46 @@ const StocksList = () => {
     getData()
 },[])
 
+
 let getData = async ()=>{
-   let res = await axios.get(url1)
-   setData(res.data)
+  let token = window.sessionStorage.getItem('token');
+ let res = await axios.get(`${stockUrl}/stocks`,{
+  headers: {authorization:`Bearer ${token}`}
+ })
+
+ if(res.data.statusCode === 200)
+      setData(res.data.users)
+ else if(res.data.statusCode === 401){
+      alert(res.data.message)
+      navigate('/login')
+ }
 }
 
-let handleDelete = async(i)=>{
-    try
-    {
-        await axios.delete(`${url1}/${i}`)
-    }
-    catch(error)
-    {
-        console.log(error)
-    }
-    getData()
-}
+let handleDelete = async(id)=>{
+  try
+  {
+      let token = window.sessionStorage.getItem('token');
+      let res = await axios.delete(`${stockUrl}/delete-stocks/${id}`,{headers:{authorization:`Bearer ${token}`}})
+  
+      if(res.data.statusCode === 200)
+      {
+          setData(res.data.users)
+      }
+      else if(res.data.statusCode === 401)
+      {
+          alert(res.data.message)
+          navigate('/login')
+      }
+      else
+      {
+          alert(res.data.message)
+      }
+  }
+  catch(error)
+  {
+      console.log(error)
+  }
+  }
 
 return (
   <div className="main-wrapper">
@@ -42,7 +66,7 @@ return (
       <Table striped bordered hover>
   <thead>
     <tr>
-      {/* <th>#</th> */}
+      <th>#</th>
       <th>Name</th>
       <th>Brand</th>
       <th>Type</th>
@@ -52,9 +76,9 @@ return (
   </thead>
   <tbody>
     {
-        data.map((e)=>{
-            return <tr key={e.id}>
-                {/* <td>{e.id}</td> */}
+        data.map((e,i)=>{
+            return <tr key={e._id}>
+                <td>{i+1}</td>
                 <td>{e.productName}</td>
                 <td>{e.ProductBrand}</td>
                 <td>{e.ProductType}</td>
@@ -62,7 +86,7 @@ return (
                 <td>
                     {/* <Button variant="primary" onClick={() => navigate(`/edit-stocks/${e.id}`)}>Edit</Button>
                     &nbsp;&nbsp; */}
-                    <Button variant="danger" onClick={() => handleDelete(e.id) }>Delete</Button>
+                    <Button variant="danger" onClick={() => handleDelete(e._id) }>Delete</Button>
                 </td>
             </tr>
         })
