@@ -68,7 +68,7 @@ function App() {
           <Route path="edit-customer/:id" element={<EditCustomer/>}/>
           <Route path="/stocks" element={<StocksList/>} />
           <Route path="/add-stocks" element={<AddStocks/>} />
-          <Route path="*" element={<Error/>} />
+          <Route path="*" element={<Login/>} />
         </Routes>
       </BrowserRouter>
     </div>
