@@ -67,7 +67,7 @@ const Signup = () => {
                         <div className='signUpImg'>
                             <img src={signUpImg} alt="signup-img" />
                         </div>
-                        <form >
+                        <form onSubmit={formik.handleSubmit}>
                             <label htmlFor="">Email <span className='redStar'>*</span></label>
                             <input type="email" className={formik.errors.email ? 'errBorder form-control' : 'form-control'} name='email' value={formik.values.email}
                                 onChange={formik.handleChange} />
@@ -90,7 +90,7 @@ const Signup = () => {
                                 formik.errors.password ? <p style={{ color: 'crimson', fontWeight: "bold", WebkitTextStroke: "0.2px black" }}>{formik.errors.password}</p> : null
                             }
                             <div className="regBtn">
-                                <button className='btn btn-warning mt-4' onSubmit={formik.handleSubmit}>Register &nbsp;<FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                                <button className='btn btn-warning mt-4' >Register &nbsp;<FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
                             </div>
                             <p className='mt-3'>If you have already account? <Link to="/login">Login</Link></p>
                         </form>
