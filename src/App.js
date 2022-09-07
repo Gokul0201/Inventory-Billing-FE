@@ -16,7 +16,7 @@ import AddCustomer from './components/customersList/AddCustomer';
 import AddStocks from './components/Stocks/AddStocks';
 import StocksList from './components/Stocks/StocksList';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import EditCustomer from './components/customersList/EditCustomer'
 
 
@@ -29,26 +29,26 @@ export const stockUrl="https://inventory-billing01.herokuapp.com/stocks";
 
 
 function App() {
-  // const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   
 
-  // function fakeRequest() {
-  //   return new Promise(resolve => setTimeout(() => resolve(), 2500));
-  // }
+  function fakeRequest() {
+    return new Promise(resolve => setTimeout(() => resolve(), 2500));
+  }
 
-  // useEffect(() => {
-  //   fakeRequest().then(() => {
-  //     const el = document.querySelector(".loader-container");
-  //     if (el) {
-  //       el.remove();
-  //       setLoading(!isLoading);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fakeRequest().then(() => {
+      const el = document.querySelector(".loader-container");
+      if (el) {
+        el.remove();
+        setLoading(!isLoading);
+      }
+    });
+  }, []);
 
-  // if (isLoading) {
-  //   return null;
-  // }
+  if (isLoading) {
+    return null;
+  }
   
   return <>
    
@@ -68,7 +68,7 @@ function App() {
           <Route path="edit-customer/:id" element={<EditCustomer/>}/>
           <Route path="/stocks" element={<StocksList/>} />
           <Route path="/add-stocks" element={<AddStocks/>} />
-          <Route path="*" element={<Login/>} />
+          <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>
     </div>
