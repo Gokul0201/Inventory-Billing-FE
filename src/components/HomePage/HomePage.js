@@ -12,8 +12,8 @@ const HomePage = () => {
       
       <header>
       <img src={logo} className="image_container"alt="logo" />
-            <h1 className=" text-center font-bold">Welcome to Inventory Billing</h1>
-            <h1 className=" text-center font-bold ">Lets do  <br/> Inventory Management & <br/>Create Invoice Easily </h1>
+            <h1 className=" text-center text-2xl">Welcome to Inventory Billing</h1>
+            <h1 className=" text-center text-2xl">Lets do  <br/> Inventory Management & <br/>Create Invoice Easily </h1>
             <div className="buttons text-center btn-container">
                 <Link to="/login">
                     <Button variant="warning">Log in</Button>
