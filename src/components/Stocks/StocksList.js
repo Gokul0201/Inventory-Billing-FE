@@ -59,8 +59,8 @@ return (
   <div className="main-wrapper">
     <Sidebar/>
     <div className='container'>
-      <h3 className='d-flex justify-content-center fw-bold text-dark'>CUSTOMERS LIST</h3>
-      <Button variant="primary" className='text-center' onClick={() => navigate('/add-stocks')}> +  Add Stocks </Button>
+      <h2 className='d-flex justify-content-center fw-bold text-dark'>CUSTOMERS LIST</h2>
+      <Button variant="primary" className='text-center text-dark ' onClick={() => navigate('/add-stocks')}> +  Add Stocks </Button>
       <div className='row py-5 '>
         <div className='col-lg-12'>
       <Table striped bordered hover>
@@ -86,7 +86,7 @@ return (
                 <td>
                     {/* <Button variant="primary" onClick={() => navigate(`/edit-stocks/${e.id}`)}>Edit</Button>
                     &nbsp;&nbsp; */}
-                    <Button variant="danger" onClick={() => handleDelete(e._id) }>Delete</Button>
+                    <Button variant="danger" className="text-dark"  onClick={() => handleDelete(e._id) }>Delete</Button>
                 </td>
             </tr>
         })

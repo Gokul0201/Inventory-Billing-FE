@@ -68,7 +68,7 @@ const AddStocks = () => {
   </Form.Group>
  
  
-  <Button variant="primary" onClick={() =>handleSubmit()}>
+  <Button variant="primary" className="text-dark"  onClick={() =>handleSubmit()}>
   Add
   </Button>
   </Form>
