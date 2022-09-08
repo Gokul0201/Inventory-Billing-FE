@@ -42,10 +42,15 @@ const Login = () => {
                 const login = await axios.post(`${url}/login`, values)
                 window.sessionStorage.setItem('token',login.data.token)
                 resetForm({ values: '' })
+                if(login.data.message === "User Logged in Successfully"){
                 toast.success(login.data.message)
                 setTimeout(() => {
                     navigate("/dashboard")
                 }, 3000)
+            }
+            else{
+                toast.error(login.data.message)
+            }
 
             } catch (error) {
                 console.log(error);
