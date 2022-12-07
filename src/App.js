@@ -20,9 +20,9 @@ import 'antd/dist/antd.min.css';
 import EditCustomer from './components/customersList/EditCustomer'
 
 
-export const url="https://inventory-billing01.herokuapp.com/users";
-export const customerUrl="https://inventory-billing01.herokuapp.com/customers";
-export const stockUrl="https://inventory-billing01.herokuapp.com/stocks";
+export const url="https://inventory-billing.onrender.com/users";
+export const customerUrl="https://inventory-billing.onrender.com/customers";
+export const stockUrl="https://inventory-billing.onrender.com/stocks";
 
 
 
